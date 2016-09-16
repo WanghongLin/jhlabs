@@ -165,6 +165,7 @@ public class BorderFilter extends AbstractBufferedImageOp {
 		}
 		g.drawRenderedImage( src, AffineTransform.getTranslateInstance( leftBorder, rightBorder ) );
 		g.dispose();
+		//todo fix it
 		return dst;
 	}
 
