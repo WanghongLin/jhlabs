@@ -155,17 +155,16 @@ public class BorderFilter extends AbstractBufferedImageOp {
 		if ( borderPaint != null ) {
 			g.setPaint( borderPaint );
 			if ( leftBorder > 0 )
-				g.fillRect( 0, 0, leftBorder, height );
+				g.fillRect( 0, 0, leftBorder, height+topBorder+bottomBorder );
 			if ( rightBorder > 0 )
-				g.fillRect( width-rightBorder, 0, rightBorder, height );
+				g.fillRect( width+leftBorder, 0, rightBorder, height +topBorder +bottomBorder );
 			if ( topBorder > 0 )
-				g.fillRect( leftBorder, 0, width-leftBorder-rightBorder, topBorder );
+				g.fillRect( leftBorder, 0, width+rightBorder, topBorder );
 			if ( bottomBorder > 0 )
-				g.fillRect( leftBorder, height-bottomBorder, width-leftBorder-rightBorder, bottomBorder );
+				g.fillRect( leftBorder, height+ topBorder, width + rightBorder, bottomBorder );
 		}
 		g.drawRenderedImage( src, AffineTransform.getTranslateInstance( leftBorder, rightBorder ) );
 		g.dispose();
-		//todo fix it
 		return dst;
 	}
 
